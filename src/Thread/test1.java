@@ -1,11 +1,11 @@
 package Thread;
 
-public class thread_test {
+public class test1 {
     private static final long count = 100000000;
 
     public static void main(String[] args) throws InterruptedException {
         concurrent();
-        serial();
+//        serial();
     }
 
 
@@ -15,26 +15,24 @@ public class thread_test {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                System.out.println("多线程开始执行");
                 int a = 0;
                 for (int i = 0; i < count; i++) {
                     a = a+5;
                 }
-                System.out.println("多线程执行完毕");
+                System.out.println("多线程计算完毕");
             }
         });
 
         thread.start();
-        System.out.println("主线程开始计算b");
+
         int b = 0;
         for (int i = 0; i < count; i++) {
             b--;
         }
-        System.out.println("b计算完了");
         thread.join(); // 这条语句的作用是：现在正在运行主线程，允许thread线程加入，等thread执行完之后，主线程才会继续执行
-        System.out.println("主线程继续执行");
+
         long time = System.currentTimeMillis() - start;
-        System.out.println("多线程所用时间：" + time + "ms, b = "+b);
+        System.out.println("多线程所用时间：" + time + "ms, b = "+b+"，主线程执行完毕");
     }
 
 
@@ -52,7 +50,7 @@ public class thread_test {
 
         long time = System.currentTimeMillis() - start;
 
-        System.out.println("串行所用时间：" + time + "ms, b = "+b);
+        System.out.println("串行所用时间：" + time + "ms, b = ");
 
     }
 }
