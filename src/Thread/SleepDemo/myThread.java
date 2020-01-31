@@ -11,10 +11,13 @@ public class myThread extends Thread {
 
     @Override
     public void run() {
+
+
+
         for (int i = 0; i < 100; i++) {
             System.out.println(Thread.currentThread().getName() + ":" + i);
             try {
-                Thread.currentThread().sleep(10000);
+                Thread.currentThread().sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
